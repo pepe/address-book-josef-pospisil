@@ -2,3 +2,4 @@
 - RoR needs webpacker needs node needs yarn
 - hello port 3000, long time no see.
 - vendor/bundle git ignored
+- postgres needs -all on ubuntu for gem compiling
