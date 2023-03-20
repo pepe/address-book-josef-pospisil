@@ -34,6 +34,8 @@
   <strong>Comment:</strong>
   <%= @person.comment %>
 </p>
+<%= link_to 'Phones', person_phones_path(@person) %>
+<%= link_to 'Emails', person_emails_path(@person) %>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
