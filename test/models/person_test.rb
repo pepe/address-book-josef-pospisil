@@ -15,6 +15,9 @@ class PersonTest < ActiveSupport::TestCase
     # do not fight the views
     vp3 = Person.new(first_name: "Joska", last_name: "koska", salutation: "")
     assert vp3.valid?
+  end
 
+  test "bussiness" do
+    assert "Mr. Joska Rakoska Koska" == people(:one).display_name 
   end
 end
