@@ -1,0 +1,4 @@
+- Ruby & Rails on Ubuntu is not that straightforward
+- RoR needs webpacker needs node needs yarn
+- hello port 3000, long time no see.
+- vendor/bundle git ignored
