@@ -1,0 +1,53 @@
+<%= form_with(model: person) do |form| %>
+  <i>Fields with * are required</i>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+        <% person.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :salutation %>
+    <%= form.select :salutation, Person.salutations %>
+  </div>
+
+  <div class="field required">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :middle_name %>
+    <%= form.text_field :middle_name %>
+  </div>
+
+  <div class="field required">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ssn %>
+    <%= form.text_field :ssn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birth_date %>
+    <%= form.date_select :birth_date, start_year: Date.current.year - 116 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :comment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

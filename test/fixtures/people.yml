@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  salutation: Mr.
+  first_name: Joska
+  middle_name: Rakoska
+  last_name: Koska
+  ssn: 777-777-777
+  birth_date: 2023-03-20
+  comment: Very nice person indeed
+
+two:
+  salutation: Mrs.
+  first_name: Venda
+  middle_name: Klapenda
+  last_name: Benda
+  ssn: 666-666-666
+  birth_date: 2023-03-20
+  comment: The best one
