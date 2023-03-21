@@ -18,6 +18,7 @@ class EmailsController < ApplicationController
 
   # GET /emails/1/edit
   def edit
+    @person = @email.person
   end
 
   # POST /emails or /emails.json
@@ -53,7 +54,7 @@ class EmailsController < ApplicationController
     @email.destroy
 
     respond_to do |format|
-      format.html { redirect_to emails_url, notice: "Email was successfully destroyed." }
+      format.html { redirect_to person_emails_url(@email.person), notice: "Email was successfully destroyed." }
       format.json { head :no_content }
     end
   end

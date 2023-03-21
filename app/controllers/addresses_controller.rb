@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses or /addresses.json
   def index
-    @addresses = Address.all
+    @addresses = @person.addresses
   end
 
   # GET /addresses/1 or /addresses/1.json
@@ -18,6 +18,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1/edit
   def edit
+    @person = @address.person
   end
 
   # POST /addresses or /addresses.json
@@ -53,7 +54,7 @@ class AddressesController < ApplicationController
     @address.destroy
 
     respond_to do |format|
-      format.html { redirect_to addresses_url, notice: "Address was successfully destroyed." }
+      format.html { redirect_to person_addresses_url(@address.person), notice: "Address was successfully destroyed." }
       format.json { head :no_content }
     end
   end

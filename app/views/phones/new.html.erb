@@ -1,5 +1,33 @@
 <h1>New Phone</h1>
 
-<%= render 'form', phone: @phone %>
+<%= form_with(model: [@person, @phone]) do |form| %>
+  <% if @phone.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@phone.errors.count, "error") %> prohibited this phone from being saved:</h2>
+
+      <ul>
+        <% @phone.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :person_id, value: @person.id %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :comment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', person_phones_path(@person) %>

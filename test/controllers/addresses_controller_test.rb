@@ -3,21 +3,22 @@ require "test_helper"
 class AddressesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @address = addresses(:one)
+    @address.person = people(:one)
   end
 
   test "should get index" do
-    get addresses_url
+    get person_addresses_url(@address.person)
     assert_response :success
   end
 
   test "should get new" do
-    get new_address_url
+    get new_person_address_url(@address.person)
     assert_response :success
   end
 
   test "should create address" do
     assert_difference('Address.count') do
-      post addresses_url, params: { address: { country: @address.country, person_id: @address.person_id, state: @address.state, street: @address.street, town: @address.town, zip: @address.zip } }
+      post person_addresses_url(@address.person), params: { address: { country: @address.country, person_id: @address.person_id, state: @address.state, street: @address.street, town: @address.town, zip: @address.zip } }
     end
 
     assert_redirected_to address_url(Address.last)
@@ -43,6 +44,6 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
       delete address_url(@address)
     end
 
-    assert_redirected_to addresses_url
+    assert_redirected_to person_addresses_url(@address.person)
   end
 end

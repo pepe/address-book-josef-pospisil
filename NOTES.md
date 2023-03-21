@@ -4,3 +4,5 @@
 - vendor/bundle git ignored
 - postgres needs -all on ubuntu for gem compiling
 - `-` is not symbol character in ruby :-D
+- nested resources are complex
+- 2>/dev/null for the test deprecation

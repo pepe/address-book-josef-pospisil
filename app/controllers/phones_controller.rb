@@ -18,6 +18,7 @@ class PhonesController < ApplicationController
 
   # GET /phones/1/edit
   def edit
+    @person = @phone.person
   end
 
   # POST /phones or /phones.json
@@ -53,7 +54,7 @@ class PhonesController < ApplicationController
     @phone.destroy
 
     respond_to do |format|
-      format.html { redirect_to phones_url, notice: "Phone was successfully destroyed." }
+      format.html { redirect_to person_phones_url(@phone.person), notice: "Phone was successfully destroyed." }
       format.json { head :no_content }
     end
   end

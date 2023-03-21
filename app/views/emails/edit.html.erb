@@ -1,6 +1,33 @@
 <h1>Editing Email</h1>
 
-<%= render 'form', email: @email %>
+<%= form_with(model: @email) do |form| %>
+    <% if @email.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(@email.errors.count, "error") %> prohibited this email from being saved:</h2>
 
+        <ul>
+        <% @email.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <%= form.hidden_field :person_id, value: @person.id %>
+
+    <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+    </div>
+
+    <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :comment %>
+    </div>
+
+    <div class="actions">
+    <%= form.submit %>
+    </div>
+<% end %>
 <%= link_to 'Show', @email %> |
-<%= link_to 'Back', emails_path %>
+<%= link_to 'Back', person_emails_path(@person) %>
