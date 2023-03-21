@@ -1,56 +1,62 @@
-<div>
-  <p id="notice"><%= notice %></p>
-  
-  <p>
-    <strong>Salutation:</strong>
-    <%= @person.salutation %>
-  </p>
-  
-  <p>
-    <strong>First name:</strong>
-    <%= @person.first_name %>
-  </p>
-  
-  <p>
-    <strong>Middle name:</strong>
-    <%= @person.middle_name %>
-  </p>
-  
-  <p>
-    <strong>Last name:</strong>
-    <%= @person.last_name %>
-  </p>
-  
-  <p>
-    <strong>Ssn:</strong>
-    <%= @person.ssn %>
-  </p>
-  
-  <p>
-    <strong>Birth date:</strong>
-    <%= @person.birth_date %>
-  </p>
-  
-  <p>
-    <strong>Comment:</strong>
-    <%= @person.comment %>
-  </p>
-  
-  <div class="phones">
-    <h3>Phones</h3>
-    <%= render "./phones/list", phones: @person.phones  %>
+<main class="container d-flex flex-wrap justify-content-between">
+  <div>
+    <p id="notice"><%= notice %></p>
+    
+    <p>
+      <strong>Salutation:</strong>
+      <%= @person.salutation %>
+    </p>
+    
+    <p>
+      <strong>First name:</strong>
+      <%= @person.first_name %>
+    </p>
+    
+    <p>
+      <strong>Middle name:</strong>
+      <%= @person.middle_name %>
+    </p>
+    
+    <p>
+      <strong>Last name:</strong>
+      <%= @person.last_name %>
+    </p>
+    
+    <p>
+      <strong>Ssn:</strong>
+      <%= @person.ssn %>
+    </p>
+    
+    <p>
+      <strong>Birth date:</strong>
+      <%= @person.birth_date %>
+    </p>
+    
+    <p>
+      <strong>Comment:</strong>
+      <%= @person.comment %>
+    </p>
+
+    <div>
+      <%= link_to 'Edit', edit_person_path(@person) %> |
+      <%= link_to 'Back', people_path %>
+    </div>
   </div>
-  
-  <div class="emails">
-    <h3>Emails</h3>
-    <%= render "./emails/list", emails: @person.emails  %>
-  </div>
-  
-  <div class="addresses">
+    
+  <div>
+    <div class="phones">
+      <h3>Phones</h3>
+      <%= render "./phones/list", phones: @person.phones  %>
+    </div>
+    
+    <div class="emails">
+      <h3>Emails</h3>
+      <%= render "./emails/list", emails: @person.emails  %>
+    </div>
+    
+    <div class="addresses">
     <h3>Addresses</h3>
     <%= render "./addresses/list", addresses: @person.addresses  %>
+    </div>
   </div>
-</div>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+</main>
