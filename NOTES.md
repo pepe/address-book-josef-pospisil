@@ -6,3 +6,4 @@
 - `-` is not symbol character in ruby :-D
 - nested resources are complex
 - 2>/dev/null for the test deprecation
+- webpack is slow

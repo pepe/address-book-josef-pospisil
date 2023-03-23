@@ -1,10 +1,14 @@
 class PhonesController < ApplicationController
+  layout proc { false if request.xhr? }
   before_action :set_phone, only: %i[ show edit update destroy ]
   before_action :set_person, only: %i[ index new create ]
 
   # GET /phones or /phones.json
   def index
     @phones = Phone.all
+    if request.xhr?
+      render partial: "list", locals: { phones: @phones }
+    end
   end
 
   # GET /phones/1 or /phones/1.json
@@ -27,8 +31,12 @@ class PhonesController < ApplicationController
 
     respond_to do |format|
       if @phone.save
-        format.html { redirect_to phone_url(@phone), notice: "Phone was successfully created." }
-        format.json { render :show, status: :created, location: @phone }
+        if request.xhr?
+          format.html { render inline: "<%= link_to 'New Phone', new_person_phone_path(@person), class: 'new' %>" }
+        else
+          format.html { redirect_to phone_url(@phone), notice: "Phone was successfully created." }
+          format.json { render :show, status: :created, location: @phone }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @phone.errors, status: :unprocessable_entity }

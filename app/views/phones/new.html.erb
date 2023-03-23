@@ -17,16 +17,16 @@
 
   <div class="field">
     <%= form.label :number %>
-    <%= form.text_field :number %>
+    <%= form.text_field :number, id: "number" %>
   </div>
 
   <div class="field">
     <%= form.label :comment %>
-    <%= form.text_area :comment %>
+    <%= form.text_area :comment, id: "comment" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "xhr" if request.xhr? %>
   </div>
 <% end %>
 
