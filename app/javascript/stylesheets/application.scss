@@ -1,6 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
 
+.required :after {
+    content: " *";
+    color: red;
+  }
+
 .content {
     flex: 1;
 }
@@ -8,6 +13,8 @@
 .side {
     flex: 2;
     & > div {
-        margin-bottom: 1rem;
+        & > table {
+            width: 100%;
+        }
     }
-}
+}   

@@ -44,19 +44,19 @@
   </div>
     
   <div class="side">
-    <div class="phones">
+    <div class="phones mb-3">
       <strong>Phones</strong>
       <%= render "./phones/list", phones: @person.phones  %>
       <div><%= link_to 'New Phone', new_person_phone_path(@person), class: "new" %></div>
     </div>
     
-    <div class="emails">
+    <div class="emails mb-3">
       <strong>Emails</strong>
       <%= render "./emails/list", emails: @person.emails  %>
       <div><%= link_to 'New Email', new_person_email_path(@person) %></div>
     </div>
     
-    <div class="addresses">
+    <div class="addresses mb-3">
       <strong>Addresses</strong>
       <%= render "./addresses/list", addresses: @person.addresses  %>
       <div><%= link_to 'New Address', new_person_address_path(@person) %></div>
