@@ -2,6 +2,7 @@ class PhonesController < ApplicationController
   layout proc { false if request.xhr? }
   before_action :set_phone, only: %i[ show edit update destroy ]
   before_action :set_person, only: %i[ index new create ]
+  before_action :check_session
 
   # GET /phones or /phones.json
   def index
@@ -71,12 +72,11 @@ class PhonesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_phone
       @phone = Phone.find(params[:id])
+      unless @phone.person.user == helpers.current_user
+        redirect_to "/logout", notice: "illegal access"
+      end
     end
 
-    def set_person
-      @person = Person.find(params[:person_id])
-    end
-    
     # Only allow a list of trusted parameters through.
     def phone_params
       params.require(:phone).permit(:number, :comment, :person_id)

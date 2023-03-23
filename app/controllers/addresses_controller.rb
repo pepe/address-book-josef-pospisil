@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: %i[ show edit update destroy ]
   before_action :set_person, only: %i[ index new create ]
+  before_action :check_session
 
   # GET /addresses or /addresses.json
   def index
@@ -59,13 +60,12 @@ class AddressesController < ApplicationController
     end
   end
 
-  private
-    def set_person
-      @person = Person.find(params[:person_id])
-    end
-    
+  private    
     def set_address
       @address = Address.find(params[:id])
+      unless @address.person.user == helpers.current_user
+        redirect_to "/logout", notice: "illegal access"
+      end
     end
 
     # Only allow a list of trusted parameters through.

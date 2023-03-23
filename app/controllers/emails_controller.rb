@@ -1,6 +1,7 @@
 class EmailsController < ApplicationController
   before_action :set_email, only: %i[ show edit update destroy ]
   before_action :set_person, only: %i[ index new create ]
+  before_action :check_session
 
   # GET /emails or /emails.json
   def index
@@ -63,10 +64,9 @@ class EmailsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_email
       @email = Email.find(params[:id])
-    end
-
-    def set_person
-      @person = Person.find(params[:person_id])
+      unless @email.person.user == helpers.current_user
+        redirect_to "/logout", notice: "illegal access"
+      end
     end
 
     # Only allow a list of trusted parameters through.

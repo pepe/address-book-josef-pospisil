@@ -12,39 +12,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :salutation %>
-    <%= form.select :salutation, Person.salutations %>
+  <div class="mb-2">
+    <%= form.label :salutation, class: "form-label" %>
+    <%= form.select :salutation, Person.salutations, {}, {class: "form-control"} %>
   </div>
 
-  <div class="field required">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, required: true %>
+  <div class="mb-2 required">
+    <%= form.label :first_name, class: "form-label" %>
+    <%= form.text_field :first_name, class: "form-control", required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :middle_name %>
-    <%= form.text_field :middle_name %>
+  <div class="mb-2">
+    <%= form.label :middle_name, class: "form-label" %>
+    <%= form.text_field :middle_name, class: "form-control" %>
   </div>
 
-  <div class="field required">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, required: true %>
+  <div class="mb-2 required">
+    <%= form.label :last_name, class: "form-label" %>
+    <%= form.text_field :last_name, class: "form-control", required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :ssn %>
-    <%= form.text_field :ssn %>
+  <div class="mb-2">
+    <%= form.label :ssn, class: "form-label" %>
+    <%= form.text_field :ssn, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :birth_date %>
-    <%= form.date_select :birth_date, start_year: Date.current.year - 116 %>
+  <div class="mb-2">
+    <%= form.label :birth_date, class: "form-label" %>
+    <div class="form-control"><%= form.date_select :birth_date, {start_year: Date.current.year - 116} %></div>
   </div>
 
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
+  <div class="mb-2">
+    <%= form.label :comment, class: "form-label" %>
+    <%= form.text_area :comment, class: "form-control" %>
   </div>
 
   <div class="actions">

@@ -11,7 +11,7 @@
   </head>
 
   <body class="container">
-    <nav class="navbar"><h1><a href="/" class="navbar-brand">ABJP</a></h1></nav>
+    <nav class="navbar"><h1><a href="/" class="navbar-brand">ABJP</a></h1><% if logged_in? %><a href="/logout">logout <%= current_user.username %></a> <% else %><a href="/signup">signup</a><% end %></nav>
     <%= yield %>
   </body>
 </html>

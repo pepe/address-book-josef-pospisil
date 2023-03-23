@@ -1,4 +1,6 @@
 class Person < ApplicationRecord
+    belongs_to :user
+    
     def Person.salutations
         [nil, "", "Mr.", "Mrs.", "Ms."]
     end
