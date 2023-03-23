@@ -37,6 +37,12 @@ class EmailsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not show email for other person" do
+    login(:one)
+    get email_url(emails(:two))
+    assert_redirected_to "/logout"
+  end
+
   test "should get edit" do
     login(:one)
     get edit_email_url(@email)

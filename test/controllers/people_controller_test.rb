@@ -37,6 +37,12 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not show person for other" do
+    login(:one)
+    get person_url(people(:two))
+    assert_redirected_to "/logout"
+  end
+
   test "should get edit" do
     login(:one)
     get edit_person_url(@person)

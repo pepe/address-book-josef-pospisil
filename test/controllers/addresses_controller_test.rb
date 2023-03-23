@@ -37,6 +37,12 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not show address not belonging" do
+    login(:one)
+    get address_url(addresses(:two))
+    assert_redirected_to "/logout"
+  end
+
   test "should get edit" do
     login(:one)
     get edit_address_url(@address)
