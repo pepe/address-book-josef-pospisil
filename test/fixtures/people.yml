@@ -8,6 +8,7 @@ one:
   ssn: 777-777-777
   birth_date: 2023-03-20
   comment: Very nice person indeed
+  user: one
 
 two:
   salutation: Mrs.
@@ -17,3 +18,4 @@ two:
   ssn: 666-666-666
   birth_date: 2023-03-20
   comment: The best one
+  user: one

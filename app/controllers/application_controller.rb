@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
     def set_person
         id = params[:id] || params[:person_id]
+        
         unless Person.exists?(id)
             redirect_to "/", notice: "person does not exist"
         else

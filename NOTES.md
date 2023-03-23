@@ -7,3 +7,4 @@
 - nested resources are complex
 - 2>/dev/null for the test deprecation
 - webpack is slow
+- fixtures can have relation, but id: is no no no
