@@ -32,6 +32,7 @@ function postCreate(se) {
     $.post(url, $("form").serialize()).done((re) => {
         $("form").parent("div").html(re);
         getList(url);
+        setup();
     });
 }
 
@@ -42,7 +43,26 @@ function getNew(e) {
         $("form").on("submit", postCreate)})
 }
 
-$(() => { 
+function delet(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (confirm('Are you sure?')) {
+        $.ajax({url: $(e.target).attr("href"), method: "delete"}).done((resp) => {
+            $(e.target).parents("table").html(resp);
+            setup();
+        })
+    }
+    
+}
+
+window.setup = function () {
+    $("a.new").off("click");
+    $("a.delete").off("click");
     $("a.new").on("click", getNew);
+    $("a.delete").on("click", delet);
+}
+
+$(() => { 
+    window.setup();
 })
 

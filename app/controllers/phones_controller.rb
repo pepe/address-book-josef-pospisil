@@ -60,11 +60,15 @@ class PhonesController < ApplicationController
 
   # DELETE /phones/1 or /phones/1.json
   def destroy
+    phones = @phone.person.phones
     @phone.destroy
-
-    respond_to do |format|
-      format.html { redirect_to person_phones_url(@phone.person), notice: "Phone was successfully destroyed." }
-      format.json { head :no_content }
+    if request.xhr?
+      render partial: "list", locals: {phones: phones}
+    else
+      respond_to do |format|
+        format.html { redirect_to person_phones_url(@phone.person), notice: "Phone was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 
